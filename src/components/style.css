@@ -1,0 +1,139 @@
+*{
+    padding:0px;
+    margin: 0px;
+}
+
+.menuitemdiv{
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    gap: 25px;
+    padding: 10px;
+    cursor: pointer;
+    
+    
+}
+
+.menuitemdiv:hover{
+    background-color:#c5c6d0
+}
+.homecontent{
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    padding: 80px 0px;
+    background-color:#f9fcf2;
+    height: 100vh;
+    width: 100%;
+}
+
+.contentitems{
+    display: flex;
+    height: 80px;
+    align-items: center;
+    gap:300px;
+    border: 2px solid #c5c6d0;
+    padding:40px;
+    margin-bottom: 60px;
+    margin-left: 400px;
+    border-radius :7px;
+    font-weight: bold;
+    background-color: white;
+    width:550px;
+    justify-content: space-between;
+}
+
+.firstitem{
+    color: #78e07a;
+    
+}
+.seconditem{
+    color: #3c1361
+}
+.thirdItem{
+    color: #484948;
+}
+.fourthitem{
+    color: #e5de00;
+}
+.firsticon{
+    background-color: #c9fec0;
+    padding: 10px;border-radius: 5px;
+}
+.secondicon{
+    background-color: #bca0dc;
+    padding: 10px;border-radius: 5px;
+}
+
+.thirdicon{
+    background-color: #d6cfc7;
+    padding: 10px;border-radius: 5px;
+}
+
+.fourthicon{
+    background-color: #f1ee8e;
+    padding: 10px;border-radius: 5px;
+}
+
+.inputstyle{
+    display:block;
+    width: 100%;
+    background-color: #c0c0c0;
+}
+.container{
+   
+    width: '100%'; 
+    padding:0px;
+
+}
+
+.top{
+    display: flex;
+    padding: 50px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid #c0c0c0;
+    
+    
+}
+.form{
+    width: 300px;
+    display: block;
+    margin:0px auto;
+}
+@media screen and (max-width:1000px){
+    .contentitems{
+        display: flex;
+        height: 80px;
+        align-items: center;
+        gap:100px;
+        border: 2px solid #c5c6d0;
+        padding:40px;
+        margin-bottom: 30px;
+        margin-left: 25px;
+        border-radius :7px;
+        font-weight: bold;
+        background-color: white;
+        width:320px;
+        justify-content: space-between;
+    }
+
+    .homecontent{
+        display: block;
+        margin: 0 auto;
+        justify-content: center;
+        align-content: center;
+        padding: 100px 0px;
+        background-color:#f9fcf2;
+        height: 100%;
+        width: 100%;
+    }
+    
+    
+}
+
+
+
+
+
