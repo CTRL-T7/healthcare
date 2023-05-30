@@ -27,7 +27,7 @@ function Homescreen() {
         justifyContent:'space-between',
         alignItems:'center',
         padding: '20px 25px',
-        borderBottom: '1px solid #c5c6d0',
+       
        
     };
 
