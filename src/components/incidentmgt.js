@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {AiOutlineClose} from "react-icons/ai"
 import "./style.css"
 import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
+
 
 
 function sendEmail(e){
@@ -16,7 +17,17 @@ function sendEmail(e){
   })
 }
 
-function incidentmgt() {
+ 
+
+  
+
+function Incidentmgt() {
+
+  const [File, setFile] = useState(null);
+
+  function handleChange(event){
+    setFile(URL.createObjectURL(event.target.files[0]));
+  }
   return (
     <div>
         <div className='top'>
@@ -30,7 +41,7 @@ function incidentmgt() {
         <form class="space-y-6 mt-10 " className='form' action="#" method="POST" id="incident-mgt" onSubmit={sendEmail}>
 
 <div class="mb-2.5 mt-12" >
-<label for="date" class="block text-sm font-medium leading-6 text-gray-900">Date</label>
+<label for="date" class="block text-sm font-medium leading-6 text-gray-900">Date of Incident</label>
 <div class="mt-2">
   <input id="date" name="date" type="date" autocomplete="date" required class="block px-3 w-full bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
 
@@ -38,7 +49,7 @@ function incidentmgt() {
 </div>
 <div class="mb-2.5 mt-8">
 <div class="flex items-center justify-between">
-  <label for="staff" class="block text-sm font-medium leading-6 text-gray-900">Support Staff</label>
+  <label for="staff" class="block text-sm font-medium leading-6 text-gray-900">Staff On Duty</label>
  
 </div>
 <div class="mt-2" >
@@ -47,9 +58,31 @@ function incidentmgt() {
 </div>
 </div>
 
+<div class="mb-2.5 mt-8" >
+<div  class="flex items-center justify-between">
+  <label for="action" class="block text-sm font-medium leading-6 text-gray-900">What Led Up To The Incident</label>
+ 
+</div>
+<div class="mt-2" >
+  <textarea id="action" name="action" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+
 <div class="mb-2.5 mt-8">
 <div class="flex items-center justify-between">
-  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Description Of the Incident</label>
+  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Narrate Incident</label>
+ 
+</div>
+<div class="mt-2" >
+  <textarea id="description" name="description" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Unit address</label>
  
 </div>
 <div class="mt-2" >
@@ -71,7 +104,7 @@ function incidentmgt() {
 
 <div class="mb-2.5 mt-8" >
 <div  class="flex items-center justify-between">
-  <label for="action" class="block text-sm font-medium leading-6 text-gray-900">Action Taken</label>
+  <label for="action" class="block text-sm font-medium leading-6 text-gray-900">Action To Be Taken</label>
  
 </div>
 <div class="mt-2" >
@@ -80,7 +113,27 @@ function incidentmgt() {
 </div>
 </div>
 
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Unit manager</label>
+ 
+</div>
+<div class="mt-2" >
+  <textarea id="description" name="description" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
 
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="concequences" class="block text-sm font-medium leading-6 text-gray-900">Upload Image</label>
+ 
+</div>
+<div class="mt-2" >
+  <input id="concequences" name="concequences" type='file' onChange={handleChange} required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  {File && <img src={File} alt='preview'/>}
+</div>
+</div>
 <div class="mb-2.5 mt-12" >
 <label for="date" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
 <div class="mt-2">
@@ -108,4 +161,4 @@ function incidentmgt() {
   )
 }
 
-export default incidentmgt
+export default Incidentmgt

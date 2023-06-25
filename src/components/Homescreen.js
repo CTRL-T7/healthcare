@@ -13,6 +13,7 @@ import {GoNote} from 'react-icons/go'
 import {GrFormAdd} from 'react-icons/gr'
 import "./style.css"
 import {Link, NavLink} from "react-router-dom"
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Homescreen() {
 
@@ -58,6 +59,28 @@ function Homescreen() {
     const toggleDrawer = () => {
         setOpen((prevState) => !prevState)
     }
+    const { loginWithRedirect } = useAuth0();
+    const DrawerItem =({path, label, Icon}) =>(
+        <NavLink
+        
+       
+        to={path}
+        style={({ isActive, isPending }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isActive ? "#1560bd" : "black",
+          };
+        }}
+      >
+          <div>
+        </div>
+              <div className='menuitemdiv'>
+                {<Icon size={20}/>}  
+                    <h1>{label}</h1>                  
+                </div>
+         </NavLink>
+    )
+    
   return (
     <div >
         
@@ -74,75 +97,26 @@ function Homescreen() {
                 enableOverlay={false}
             >
                 <div style={menucontainer} className='menucontainer'>
-                <NavLink
-  to="/homescreen"
-  style={({ isActive, isPending }) => {
-    return {
-      fontWeight: isActive ? "bold" : "",
-      color: isActive ? "#1560bd" : "black",
-      
-      
-    };
-  }}
->
-    <div>
-        
-    </div>
-                    <div className='menuitemdiv'>
-                        <AiOutlineHome size={20}/>  
-                        <h1>Dashboard</h1>                  
-                    </div>
-                    </NavLink>
-
+              <DrawerItem path={'/homescreen'} label={'Dashboard'} Icon={AiOutlineHome}/>
                     <h1 style={sectiontitle}>YP SUPPORT</h1>
 
-                    <div className='menuitemdiv'>
-                        <BiMessageDetail size={20}/>  
-                        <h1>Interactions</h1>                  
-                    </div>
-             <NavLink
-                to="/incidentmgt"
-                style={({ isActive, isPending }) => {
-                    return {
-                    fontWeight: isActive ? "bold" : "",
-                    color: isActive ? "#1560bd" : "black",
+                   <DrawerItem path={'/'} label={'Interactions'} Icon={BiMessageDetail}/>
+                     <DrawerItem path={'/incidentmgt'} label={'Incident Mgt'} Icon={TbHeartRateMonitor} />
+                     <DrawerItem path={'/'} label={'Key Work Sessions'} Icon={GoNote}/>
+                  
                     
-                    
-                    };
-                }}
-                >
-                    <div className='menuitemdiv'>
-                        <TbHeartRateMonitor size={20}/>  
-                        <h1>Incident Mgt</h1>                  
-                    </div>
-                    </NavLink>
-                    <div className='menuitemdiv'>
-                        <GoNote size={20}/>  
-                        <h1>Key Work Sessions</h1>                  
-                    </div>
                     
                     <h1 style={sectiontitle}>INDUCTION</h1>
                     
-                    <div className='menuitemdiv'>
-                        <GrFormAdd size={20}/>  
-                        <h1>Soft Handbook</h1>                  
-                    </div>
-                    <div className='menuitemdiv'>
-                        <BiBuildingHouse size={20}/>  
-                        <h1>Sign Off Sheet</h1>                  
-                    </div>
-                    <div className='menuitemdiv'>
-                        <BiMessageDetail size={20}/>  
-                        <h1>Policy</h1>                  
-                    </div>
+                    <DrawerItem path={'/'} label={'Soft Handbook'} Icon={GrFormAdd}/>
+                    <DrawerItem path={'/'} label={'Sign Off Sheet'} Icon={BiBuildingHouse}/>
+                    <DrawerItem path={'/'} label={'Policy'} Icon={BiMessageDetail}/>
+                  
 
                     <h1 style={sectiontitle}>PERSONAL DEVELOPMENT</h1>
 
                     
-                    <div className='menuitemdiv'>
-                        <GrFormAdd size={20}/>  
-                        <h1>Training Hub</h1>                  
-                    </div>
+                    <DrawerItem path={'/'} label={'Training Hub'} Icon={GrFormAdd}/>
 
                     <h1 style={sectiontitle}>YOUNG PEOPLE</h1>
                 </div>
