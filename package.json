@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage":"https://healthcaretest.netlify.app",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.1.1",
