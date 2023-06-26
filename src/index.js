@@ -12,7 +12,7 @@ root.render(
       domain="dev-np1mr2qs4kiwvivc.us.auth0.com"
       clientId="okCpcEvsOkZ2qYDbCuNgTcCNv6k3MdP3"
       authorizationParams={{
-        redirect_uri:"http://localhost:3000/homescreen"
+        redirect_uri:"https://healthcaretest.netlify.app/homescreen"
       }}
     >
 
