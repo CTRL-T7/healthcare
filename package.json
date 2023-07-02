@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage":"https://healthcaretest.netlify.app",
+  "homepage": "https://healthcaretest.netlify.app",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.1.1",
@@ -16,6 +16,7 @@
     "react-modern-drawer": "^1.2.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "sweetalert2": "^11.7.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

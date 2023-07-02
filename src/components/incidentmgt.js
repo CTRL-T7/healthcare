@@ -3,6 +3,7 @@ import {AiOutlineClose} from "react-icons/ai"
 import "./style.css"
 import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2'
 
 
 
@@ -11,8 +12,18 @@ function sendEmail(e){
   emailjs.sendForm('health care', 'template_2756m5j', '#incident-mgt', '0UHfwqtAlRvowPagM')
   .then((result)=> {
     console.log(result.text);
+    Swal.fire(
+      'Successful',
+      'Your report has been sent to the relevant parties.',
+      'success'
+    )
   }, (error) =>{
     console.log(error.text);
+    Swal.fire(
+      'Error',
+      'Your report was not successfully sent. please tryy again later.',
+      'error'
+    )
   
   })
 }
@@ -31,7 +42,7 @@ function Incidentmgt() {
   return (
     <div>
         <div className='top'>
-            <h1 class='font-semibold'>Create Incident</h1>
+            <h1 class='font-semibold'>Incident Report</h1>
             <Link to ="/homescreen">
 
             <AiOutlineClose size={24}/>
@@ -39,11 +50,78 @@ function Incidentmgt() {
 
         </div>
         <form class="space-y-6 mt-10 " className='form' action="#" method="POST" id="incident-mgt" onSubmit={sendEmail}>
+        
+        <div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="reporter" class="block text-sm font-medium leading-6 text-gray-900"> Name of Person Reporting</label>
+ 
+</div>
+<div class="mt-2" >
+  <input id="reporter" name="reporter" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="role" class="block text-sm font-medium leading-6 text-gray-900">Role Of Person Reporting</label>
+ 
+</div>
+<div class="mt-2" >
+  <select id="role" name="role" required class="block w-full px-3 bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    <option value='staff member'> Staff Member</option>
+    <option value='resident'>Resident</option>
+    <option value='vistor'>Visitor</option>
+    </select>
+  
+</div>
+</div>
 
 <div class="mb-2.5 mt-12" >
-<label for="date" class="block text-sm font-medium leading-6 text-gray-900">Date of Incident</label>
+<label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email Of Person Reporting</label>
+<div class="mt-2">
+  <input id="email" name="email" type="email" autocomplete="email" required class="block px-3 w-full bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+
+   
+</div>
+</div>
+
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="reportee" class="block text-sm font-medium leading-6 text-gray-900"> Name of Person Involved</label>
+ 
+</div>
+<div class="mt-2" >
+  <input id="reportee" name="reportee" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="incident-type" class="block text-sm font-medium leading-6 text-gray-900">Type of Incident</label>
+ 
+</div>
+<div class="mt-2" >
+  <select id="incident-type" name="incident-type"  required class="block w-full px-3 bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+    <option value='assualt'>Assualt</option>
+    <option value='theft'> Theft</option>
+    <option value='vandalisim'>Vandalism</option>
+    <option value='harassment'>Harassment</option>
+    <option value='other'>Other</option>
+    </select>
+  
+</div>
+</div>
+
+
+
+<div class="mb-2.5 mt-12" >
+<label for="date" class="block text-sm font-medium leading-6 text-gray-900">Date & Time of Incident</label>
 <div class="mt-2">
   <input id="date" name="date" type="date" autocomplete="date" required class="block px-3 w-full bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  <input id="date" name="time" type="time" autocomplete="time" required class="block px-3 w-full bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+
 
    
 </div>
@@ -57,6 +135,30 @@ function Incidentmgt() {
   
 </div>
 </div>
+
+
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="witness" class="block text-sm font-medium leading-6 text-gray-900">Witness</label>
+ 
+</div>
+<div class="mt-2" >
+  <input id="witness" name="witness"  class="block w-full px-3 bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
+  <label for="witness-email" class="block text-sm font-medium leading-6 text-gray-900">Witness Email</label>
+ 
+</div>
+<div class="mt-2" >
+  <input id="witness-email" name="witness-email"   class="block w-full px-3 bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+
 
 <div class="mb-2.5 mt-8" >
 <div  class="flex items-center justify-between">
@@ -80,16 +182,6 @@ function Incidentmgt() {
 </div>
 </div>
 
-<div class="mb-2.5 mt-8">
-<div class="flex items-center justify-between">
-  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Unit address</label>
- 
-</div>
-<div class="mt-2" >
-  <textarea id="description" name="description" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-  
-</div>
-</div>
 
 <div class="mb-2.5 mt-8">
 <div class="flex items-center justify-between">
@@ -119,27 +211,29 @@ function Incidentmgt() {
  
 </div>
 <div class="mt-2" >
-  <textarea id="description" name="description" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  <input id="description" name="description" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
   
 </div>
 </div>
 
 <div class="mb-2.5 mt-8">
 <div class="flex items-center justify-between">
+  <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Unit address</label>
+ 
+</div>
+<div class="mt-2" >
+  <input id="description" name="description" type='multitext' required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  
+</div>
+</div>
+<div class="mb-2.5 mt-8">
+<div class="flex items-center justify-between">
   <label for="concequences" class="block text-sm font-medium leading-6 text-gray-900">Upload Image</label>
  
 </div>
 <div class="mt-2" >
-  <input id="concequences" name="concequences" type='file' onChange={handleChange} required class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+  <input id="concequences" name="concequences" type='file' onChange={handleChange}  class="block w-full px-3 bg-zinc-300 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
   {File && <img src={File} alt='preview'/>}
-</div>
-</div>
-<div class="mb-2.5 mt-12" >
-<label for="date" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
-<div class="mt-2">
-  <input id="email" name="email" type="email" autocomplete="email" required class="block px-3 w-full bg-zinc-300 rounded-md  py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
-
-   
 </div>
 </div>
 </div>
@@ -150,7 +244,7 @@ function Incidentmgt() {
 
 <div class="mb-10 mt-8">
 
-<button type="submit" class="flex w-full  justify-center rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+<button type="submit" class="flex w-full  justify-center rounded-md bg-indigo-600 px-3 py-2.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit report</button>
 
 
 </div>
