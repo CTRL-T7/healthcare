@@ -4,7 +4,7 @@ import "./style.css"
 import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
-import axios from 'axios';
+
 
 
 
@@ -56,21 +56,7 @@ function Incidentmgt({userId}) {
   };
 
 
-  useEffect(()=>{
-  
-    const fetchUser = async (userId) =>{
-      try{
-        const response = await axios.get('https://dev-np1mr2qs4kiwvivc.us.auth0.com/api/v2/users/${id}',{headers:{Authorization:'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjhHdU44NUd1Y2hDYnZ2bDVYQi1UNiJ9',},
-      });
-      setEmail(response.data.email);
-      }catch (error){
-        console.log(error);
-      }
-    }
-  
-    fetchUser();
-   }, [userId]);
-  
+ 
   return (
     <div>
         <div className='top'>
